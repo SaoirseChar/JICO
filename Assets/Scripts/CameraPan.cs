@@ -19,13 +19,14 @@ public class CameraPan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region Quaternion Rotation
+        #region Rotation
 
         float step = speed * Time.deltaTime;
-
+        
         //Rotation angle of target
         Quaternion rotationTarget = Quaternion.LookRotation(target.position - transform.position);
-        
+
+        //Rotate toward target
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotationTarget, step);
         
         #endregion
