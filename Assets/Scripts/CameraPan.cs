@@ -10,7 +10,7 @@ public class CameraPan : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Jico").transform;
     }
 
     // Update is called once per frame
