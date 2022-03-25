@@ -38,7 +38,8 @@ public class Temp_Health : MonoBehaviour
     public float turnSpeed;
     
     private Animator anim;
-    public Material deadMat; 
+    public Material deadMat;
+    public Material newMat; 
     
     private void Start()
     {
@@ -59,9 +60,9 @@ public class Temp_Health : MonoBehaviour
         _hunger.fillAmount = hungry;
         _fun.fillAmount = play;*/
 
-        happyText.text = _happiness.fillAmount.ToString();
-        funText.text = _fun.fillAmount.ToString();
-        hungerText.text = _hunger.fillAmount.ToString();
+        happyText.text = "Love: " + happy.ToString();
+        funText.text = "Fun: " + play.ToString();
+        hungerText.text = "Hunger: " + hungry.ToString();
         
         //Smooth rotation between walk points
         targetAngle = Mathf.Atan2(patrolSpots[randomSpot].transform.position.x - transform.position.x,
@@ -71,25 +72,25 @@ public class Temp_Health : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            DecreaseHunger(0.01f);
+            DecreaseHunger(10f);
             print(happy);
         }
         
         if (Input.GetKeyDown(KeyCode.P))
         {
-            DecreaseHappiness(0.01f);
+            DecreaseHappiness(10f);
             print(hungry);
         }
         
         if (Input.GetKeyDown(KeyCode.I))
         {
-            UpdateHunger(0.01f);
+            UpdateHunger(10f);
             print(happy);
         }
         
         if (Input.GetKeyDown(KeyCode.O))
         {
-            UpdateHappiness(0.01f);
+            UpdateHappiness(10f);
             print(hungry);
         }
 
@@ -111,11 +112,12 @@ public class Temp_Health : MonoBehaviour
                     {
                         //Play cute noise
                         PetNoises(petNoise);
-                        UpdateHappiness(1); //Increase happiness
+                        UpdateHappiness(5); //Increase happiness
                         hearts.Play(); //Play hearts particles
                         clickCount = 0; //Reset click count
                         //Make Pet jump when happy
-                        anim.Play("Test_Jump");
+                        transform.position = Vector3.up * 1f;
+                        ///anim.Play("Test_Jump");
                     }
                 }
             }
@@ -181,6 +183,7 @@ public class Temp_Health : MonoBehaviour
         if(hungry <= 0)
         {
             hungry = 0;
+            gameObject.GetComponent<MeshRenderer>().material = deadMat;
         }
     }
     
@@ -193,6 +196,7 @@ public class Temp_Health : MonoBehaviour
         if(happy >= 1)
         {
             happy = 1;
+            gameObject.GetComponent<MeshRenderer>().material = newMat;
         }
     }
     
@@ -205,6 +209,7 @@ public class Temp_Health : MonoBehaviour
         if(hungry >= 1)
         {
             hungry = 1;
+            gameObject.GetComponent<MeshRenderer>().material = newMat;
         }
     }
     

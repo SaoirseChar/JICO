@@ -1387,9 +1387,9 @@ MonoBehaviour:
   happyText: {fileID: 1378526120}
   funText: {fileID: 976175015}
   hungerText: {fileID: 1131393687}
-  happy: 1
-  hungry: 1
-  play: 1
+  happy: 100
+  hungry: 100
+  play: 100
   clickCount: 0
   hearts: {fileID: 860160642}
   sleep: {fileID: 1268136248}
@@ -1414,6 +1414,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   turnSpeed: 0.5
   deadMat: {fileID: 2100000, guid: 952410e9bddb2424f985b39977e1c2e2, type: 2}
+  newMat: {fileID: 2100000, guid: da5c4fcab5be8ff499bdf565ddc3efff, type: 2}
 --- !u!4 &439438831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6080136733598372274, guid: 5a81cd115bd5dc147b16f9add3b6e010, type: 3}
