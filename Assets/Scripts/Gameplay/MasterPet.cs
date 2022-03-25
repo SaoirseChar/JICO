@@ -6,9 +6,9 @@ public class MasterPet : MonoBehaviour
 {
     #region Pet Stats Variables
     [Header("Pet Stats")]
-    private int hunger;
-    private int happiness;
-    private int fun;
+    private float hunger;
+    private float happiness;
+    private float fun;
     private string petName;
 
     #region Animations
@@ -39,19 +39,19 @@ public class MasterPet : MonoBehaviour
     #endregion
 
     #region PROPERTIES
-    public int Hunger
+    public float Hunger
     {
         get { return hunger; }
         set { hunger = value; }
     }
 
-    public int Happiness
+    public float Happiness
     {
         get { return happiness; }
         set { happiness = value; }
     }
 
-    public int Fun
+    public float Fun
     {
         get { return fun; }
         set { fun = value; }
@@ -127,11 +127,11 @@ public class MasterPet : MonoBehaviour
         if (!PlayerPrefs.HasKey("hunger"))
         {
             hunger = 100;
-            PlayerPrefs.SetInt("hunger", hunger);
+            PlayerPrefs.SetFloat("hunger", hunger);
         }
         else
         {
-            hunger = PlayerPrefs.GetInt("hunger");
+            hunger = PlayerPrefs.GetFloat("hunger");
         }
         #endregion
 
@@ -139,11 +139,11 @@ public class MasterPet : MonoBehaviour
         if (!PlayerPrefs.HasKey("happiness"))
         {
             happiness = 100;
-            PlayerPrefs.SetInt("happiness", happiness);
+            PlayerPrefs.SetFloat("happiness", happiness);
         }
         else
         {
-            happiness = PlayerPrefs.GetInt("happiness");
+            happiness = PlayerPrefs.GetFloat("happiness");
         }
         #endregion
 
@@ -152,11 +152,11 @@ public class MasterPet : MonoBehaviour
         if (!PlayerPrefs.HasKey("fun"))
         {
             fun = 100;
-            PlayerPrefs.SetInt("fun", fun);
+            PlayerPrefs.SetFloat("fun", fun);
         }
         else
         {
-            fun = PlayerPrefs.GetInt("fun");
+            fun = PlayerPrefs.GetFloat("fun");
         }
         #endregion
 
@@ -229,7 +229,7 @@ public class MasterPet : MonoBehaviour
     /// Function to update happiness.
     /// </summary>
     /// <param name="happyIndex">happiness index for determining how much happiness is increased.</param>
-    public void UpdateHappiness(int happyIndex)
+    public void UpdateHappiness(float happyIndex)
     {
         happiness += happyIndex;
         _GameManager.instance._happiness.fillAmount = happiness;
@@ -245,7 +245,7 @@ public class MasterPet : MonoBehaviour
     /// Function to update hunger.
     /// </summary>
     /// <param name="hungerIndex">hunger index for determining how much hunger is increased.</param>
-    public void UpdateHunger(int hungerIndex)
+    public void UpdateHunger(float hungerIndex)
     {
         hunger += hungerIndex;
         _GameManager.instance._hunger.fillAmount = hunger;
@@ -257,7 +257,7 @@ public class MasterPet : MonoBehaviour
         }
     }
     
-    public void DecreaseHappiness(int sadIndex)
+    public void DecreaseHappiness(float sadIndex)
     {
         happiness -= sadIndex;
         _GameManager.instance._happiness.fillAmount = happiness;
@@ -269,7 +269,7 @@ public class MasterPet : MonoBehaviour
         }
     }
     
-    public void DecreaseHunger(int hungerIndex)
+    public void DecreaseHunger(float hungerIndex)
     {
         hunger -= hungerIndex;
         _GameManager.instance._hunger.fillAmount = hunger;
@@ -291,9 +291,9 @@ public class MasterPet : MonoBehaviour
         if(!serverTime)
         {
             UpdateDevice();
-            PlayerPrefs.SetInt("hunger", Hunger);
-            PlayerPrefs.SetInt("happiness", Happiness);
-            PlayerPrefs.SetInt("fun", Fun);
+            PlayerPrefs.SetFloat("hunger", Hunger);
+            PlayerPrefs.SetFloat("happiness", Happiness);
+            PlayerPrefs.SetFloat("fun", Fun);
             PlayerPrefs.SetString("name", Name);
         }
     }

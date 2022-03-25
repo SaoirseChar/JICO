@@ -24,7 +24,7 @@ public class _GameManager : MonoBehaviour
     public int clickCount;
 
     #region UI Elements
-    [Header("Quick Menu")]
+    /*[Header("Quick Menu")]
     public TMP_Text nameText;
     public Button editName;
     public GameObject changeNamePanel;
@@ -32,7 +32,7 @@ public class _GameManager : MonoBehaviour
     public GameObject explore;
     public GameObject quitButton;
     public GameObject feed;
-    public GameObject playFetch;
+    public GameObject playFetch;*/
     
     //Wishlist stuff (call/whistle to get pet to come to start position for petting)
     //public GameObject call;
@@ -51,14 +51,14 @@ public class _GameManager : MonoBehaviour
             return;
         }
 
+        //call.SetActive(false);
         //Set all icons in the quick menu to false
-        changeNamePanel.SetActive(false);
+        /*changeNamePanel.SetActive(false);
         editName.gameObject.SetActive(false);
         explore.SetActive(false);
         quitButton.SetActive(false);
         feed.SetActive(false);
-        //call.SetActive(false);
-        playFetch.SetActive(false);
+        playFetch.SetActive(false);*/
     }
 
     private void Update()
@@ -66,22 +66,23 @@ public class _GameManager : MonoBehaviour
         _hunger.fillAmount = pet.Hunger;
         _happiness.fillAmount = pet.Happiness;
         _fun.fillAmount = pet.Fun;
-        nameText.text = pet.Name;
+        
+        //nameText.text = pet.Name;
 
-        if(Input.GetKeyDown(KeyCode.I))
+        /*if(Input.GetKeyDown(KeyCode.I))
         {
             changeNamePanel.SetActive(true);
             editName.enabled = true;
-        }
+        }*/
         
         if (Input.GetKeyDown(KeyCode.H))
         {
-            pet.DecreaseHunger(1);
+            pet.DecreaseHunger(0.1f);
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            pet.DecreaseHappiness(4);
+            pet.DecreaseHappiness(0.5f);
         }
     }
 
@@ -104,8 +105,8 @@ public class _GameManager : MonoBehaviour
     {
         if(b)
         {
-            pet.Name = nameInput.GetComponent<InputField>().text; //Connect Name to Input field object
-            PlayerPrefs.SetString("name", pet.Name); //Set the string name to the Pet name 
+            //pet.Name = nameInput.GetComponent<InputField>().text; //Connect Name to Input field object
+            //PlayerPrefs.SetString("name", pet.Name); //Set the string name to the Pet name 
         }
     }
 
