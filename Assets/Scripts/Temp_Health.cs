@@ -2,6 +2,7 @@ using System;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,8 @@ public class Temp_Health : MonoBehaviour
     public Image _happiness;
     public Image _hunger;
     public Image _fun;
+
+    public TMP_Text happyText, funText, hungerText;
 
     public float happy, hungry, play;
 
@@ -34,8 +37,8 @@ public class Temp_Health : MonoBehaviour
     private float turnSmoothVelocity;
     public float turnSpeed;
     
-    
     private Animator anim;
+    public Material deadMat; 
     
     private void Start()
     {
@@ -52,19 +55,20 @@ public class Temp_Health : MonoBehaviour
     {
         Patrol();
         
-        _happiness.fillAmount = happy;
+        /*_happiness.fillAmount = happy;
         _hunger.fillAmount = hungry;
-        _fun.fillAmount = play;
+        _fun.fillAmount = play;*/
 
+        happyText.text = _happiness.fillAmount.ToString();
+        funText.text = _fun.fillAmount.ToString();
+        hungerText.text = _hunger.fillAmount.ToString();
+        
         //Smooth rotation between walk points
         targetAngle = Mathf.Atan2(patrolSpots[randomSpot].transform.position.x - transform.position.x,
             patrolSpots[randomSpot].transform.position.z - transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        
-        
-        
         if (Input.GetKeyDown(KeyCode.H))
         {
             DecreaseHunger(0.01f);
@@ -107,7 +111,7 @@ public class Temp_Health : MonoBehaviour
                     {
                         //Play cute noise
                         PetNoises(petNoise);
-                        UpdateHappiness(5); //Increase happiness
+                        UpdateHappiness(1); //Increase happiness
                         hearts.Play(); //Play hearts particles
                         clickCount = 0; //Reset click count
                         //Make Pet jump when happy
@@ -130,11 +134,6 @@ public class Temp_Health : MonoBehaviour
             //If wait time has passed
             if (waitTime <= 0)
             {
-                //Walk animation between points
-                //anim.SetTrigger(Walk);
-                //anim.SetTrigger("Walk");
-                //anim.SetBool("canJump", true);
-                
                 //Move to another point
                 randomSpot = Random.Range(0, patrolSpots.Length);
 
@@ -156,6 +155,8 @@ public class Temp_Health : MonoBehaviour
             }
         }
     }
+
+    
     
     public void DecreaseHappiness(float sadIndex)
     {
@@ -166,6 +167,8 @@ public class Temp_Health : MonoBehaviour
         if(happy <= 0)
         {
             happy = 0;
+            gameObject.GetComponent<MeshRenderer>().material = deadMat;
+            transform.position = Vector3.zero; 
         }
     }
     

@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Test.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +71,7 @@
       <workItem from="1647841347060" duration="902000" />
       <workItem from="1647850562777" duration="3378000" />
       <workItem from="1648165665701" duration="29000" />
-      <workItem from="1648165727970" duration="10153000" />
+      <workItem from="1648165727970" duration="12029000" />
     </task>
     <servers />
   </component>
