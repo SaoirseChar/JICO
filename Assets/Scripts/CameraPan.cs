@@ -8,9 +8,6 @@ public class CameraPan : MonoBehaviour
     // The target marker.
     public Transform target;
 
-    // Angular speed in radians per sec.
-    public float speed = 1.0f;
-
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,15 +17,10 @@ public class CameraPan : MonoBehaviour
     void Update()
     {
         #region Rotation
-
-        float step = speed * Time.deltaTime;
         
-        //Rotation angle of target
-        Quaternion rotationTarget = Quaternion.LookRotation(target.position - transform.position);
-
-        //Rotate toward target
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotationTarget, step);
-        
+        var lookDir = target.position - transform.position;
+        lookDir.y = 0; // keep only the horizontal direction
+        transform.rotation = Quaternion.LookRotation(lookDir);
         #endregion
     }
 }
