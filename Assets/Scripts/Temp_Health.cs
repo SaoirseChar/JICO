@@ -1,7 +1,4 @@
-using System;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -20,7 +17,6 @@ public class Temp_Health : MonoBehaviour
     public ParticleSystem hearts;
     public ParticleSystem sleep;
     public AudioSource petNoise;
-
     
     [Header("Pet Patrol State")] 
     public Transform[] patrolSpots;
@@ -39,13 +35,14 @@ public class Temp_Health : MonoBehaviour
     
     private Animator anim;
     public Material deadMat;
+    public Material hungryMat;
     public Material newMat; 
     
     private void Start()
     {
-        waitTime = Random.Range(0, startWaitTime.Length);
+        //anim = GetComponent<Animator>();
 
-        anim = GetComponent<Animator>();
+        waitTime = Random.Range(0, startWaitTime.Length);
 
         //Set up the random points for the blob to walk to
         randomSpot = Random.Range(0, patrolSpots.Length);
@@ -60,9 +57,9 @@ public class Temp_Health : MonoBehaviour
         _hunger.fillAmount = hungry;
         _fun.fillAmount = play;*/
 
-        happyText.text = "Love: " + happy.ToString();
-        funText.text = "Fun: " + play.ToString();
-        hungerText.text = "Hunger: " + hungry.ToString();
+        happyText.text = "Love: " + happy;
+        funText.text = "Fun: " + play;
+        hungerText.text = "Hunger: " + hungry;
         
         //Smooth rotation between walk points
         targetAngle = Mathf.Atan2(patrolSpots[randomSpot].transform.position.x - transform.position.x,
@@ -108,7 +105,7 @@ public class Temp_Health : MonoBehaviour
                 {
                     clickCount++;
                     
-                    if(clickCount >= 3)
+                    if(clickCount >= 2)
                     {
                         //Play cute noise
                         PetNoises(petNoise);
@@ -116,8 +113,7 @@ public class Temp_Health : MonoBehaviour
                         hearts.Play(); //Play hearts particles
                         clickCount = 0; //Reset click count
                         //Make Pet jump when happy
-                        transform.position = Vector3.up * 1f;
-                        ///anim.Play("Test_Jump");
+                        //anim.SetTrigger("jump");
                     }
                 }
             }
@@ -131,11 +127,13 @@ public class Temp_Health : MonoBehaviour
             moveSpeed * Time.deltaTime);
 
         //If blob has moved to a random spot = wait a few seconds
-        if (Vector3.Distance(transform.position, patrolSpots[randomSpot].position) < 0.1f)
+        if (Vector3.Distance(transform.position, patrolSpots[randomSpot].position) < 0.2f)
         {
             //If wait time has passed
             if (waitTime <= 0)
             {
+                //anim.SetInteger("Walk", 1);
+                
                 //Move to another point
                 randomSpot = Random.Range(0, patrolSpots.Length);
 
@@ -145,10 +143,11 @@ public class Temp_Health : MonoBehaviour
             else if (waitTime >= 0)
             {
                 //Make blob idle
-                //anim.SetBool("canJump", false);
-
-                anim.Play("Test_Idle");
+                //anim.SetTrigger("Idle");
                 
+                //Stop walking
+                //anim.SetInteger("Walk", 0);
+
                 //Look at point when idle
                 transform.LookAt(lookPoint);
 
@@ -170,7 +169,7 @@ public class Temp_Health : MonoBehaviour
         {
             happy = 0;
             gameObject.GetComponent<MeshRenderer>().material = deadMat;
-            transform.position = Vector3.zero; 
+            transform.position = transform.position; 
         }
     }
     
@@ -183,7 +182,7 @@ public class Temp_Health : MonoBehaviour
         if(hungry <= 0)
         {
             hungry = 0;
-            gameObject.GetComponent<MeshRenderer>().material = deadMat;
+            gameObject.GetComponent<MeshRenderer>().material = hungryMat;
         }
     }
     
@@ -193,9 +192,9 @@ public class Temp_Health : MonoBehaviour
         _happiness.fillAmount = happy;
         happy++;
 
-        if(happy >= 1)
+        if(happy >= 100)
         {
-            happy = 1;
+            happy = 100;
             gameObject.GetComponent<MeshRenderer>().material = newMat;
         }
     }
@@ -206,9 +205,9 @@ public class Temp_Health : MonoBehaviour
         _hunger.fillAmount = hungry;
         hungry++;
 
-        if(hungry >= 1)
+        if(hungry >= 100)
         {
-            hungry = 1;
+            hungry = 100;
             gameObject.GetComponent<MeshRenderer>().material = newMat;
         }
     }

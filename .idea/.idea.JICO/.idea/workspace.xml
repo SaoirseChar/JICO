@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Test.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" afterDir="false" />
     </list>
@@ -19,7 +20,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/Statemachine/StateMachine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/MasterPet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/_GameManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="26gNbwBCwC9u88sUxFOWpIV4VQY" />
@@ -71,7 +74,7 @@
       <workItem from="1647841347060" duration="902000" />
       <workItem from="1647850562777" duration="3378000" />
       <workItem from="1648165665701" duration="29000" />
-      <workItem from="1648165727970" duration="12725000" />
+      <workItem from="1648165727970" duration="15010000" />
     </task>
     <servers />
   </component>
