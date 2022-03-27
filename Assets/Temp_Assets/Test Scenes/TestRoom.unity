@@ -1261,6 +1261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429353519}
   - component: {fileID: 429353520}
+  - component: {fileID: 429353521}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1294,6 +1295,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9659029a180004583e1e39d1e64c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &429353521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429353518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce60a3e021cda3b4bbc5e36c4e93db2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _happiness: {fileID: 0}
+  _hunger: {fileID: 0}
+  _fun: {fileID: 0}
+  pet: {fileID: 0}
+  walkPoints: []
+  clickCount: 0
 --- !u!1 &430315359
 GameObject:
   m_ObjectHideFlags: 0
