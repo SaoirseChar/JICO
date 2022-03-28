@@ -12,6 +12,7 @@ public class Temp_Health : MonoBehaviour
     public TMP_Text happyText, funText, hungerText;
 
     public float happy, hungry, play;
+    public float statTime;
 
     public int clickCount = 0;
     public ParticleSystem hearts;
@@ -156,27 +157,25 @@ public class Temp_Health : MonoBehaviour
             }
         }
     }
-
-    
     
     public void DecreaseHappiness(float sadIndex)
     {
         happy -= sadIndex;
-        _happiness.fillAmount = happy;
+        _happiness.fillAmount = happy / statTime;
         happy--;
 
         if(happy <= 0)
         {
             happy = 0;
             gameObject.GetComponent<MeshRenderer>().material = deadMat;
-            transform.position = transform.position; 
+            //transform.position = transform.position; 
         }
     }
     
     public void DecreaseHunger(float hungerIndex)
     {
         hungry -= hungerIndex;
-        _hunger.fillAmount = hungry;
+        _hunger.fillAmount = hungry / statTime;
         hungry--;
 
         if(hungry <= 0)
@@ -189,7 +188,7 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHappiness(float happyIndex)
     {
         happy += happyIndex;
-        _happiness.fillAmount = happy;
+        _happiness.fillAmount = happy / statTime;
         happy++;
 
         if(happy >= 100)
@@ -202,7 +201,7 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHunger(float hungerIndex)
     {
         hungry += hungerIndex;
-        _hunger.fillAmount = hungry;
+        _hunger.fillAmount = hungry / statTime;
         hungry++;
 
         if(hungry >= 100)

@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="" />
+    <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Dead.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Dead.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/hungryMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/hungryMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/newMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/newMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestStart.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestStart.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +26,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/Statemachine/StateMachine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,7 +83,7 @@
       <workItem from="1647850562777" duration="3378000" />
       <workItem from="1648165665701" duration="29000" />
       <workItem from="1648165727970" duration="15580000" />
-      <workItem from="1648423716380" duration="343000" />
+      <workItem from="1648423716380" duration="3162000" />
     </task>
     <servers />
   </component>
