@@ -19,7 +19,7 @@ public class _GameManager : MonoBehaviour
     public Image _happiness;
     public Image _hunger;
     public Image _fun;
-    public MasterPet pet;
+    public Temp_Health pet;
     public Transform[] walkPoints;
     public int clickCount;
 
@@ -63,9 +63,9 @@ public class _GameManager : MonoBehaviour
 
     private void Update()
     {
-        _hunger.fillAmount = pet.Hunger;
-        _happiness.fillAmount = pet.Happiness;
-        _fun.fillAmount = pet.Fun;
+        _hunger.fillAmount = pet.hungry;
+        _happiness.fillAmount = pet.happy;
+        _fun.fillAmount = pet.play;
         
         //nameText.text = pet.Name;
 
@@ -74,16 +74,6 @@ public class _GameManager : MonoBehaviour
             changeNamePanel.SetActive(true);
             editName.enabled = true;
         }*/
-        
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            pet.DecreaseHunger(0.1f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            pet.DecreaseHappiness(0.5f);
-        }
     }
 
     /*public void ThrowBall()

@@ -30,7 +30,6 @@ public class SelectUI : MonoBehaviour
         if (gameObject.tag.Equals("Jico"))
         {
             DontDestroyOnLoad(gameObject);
-            //gameObject.AddComponent<Temp_Health>();
             SceneManager.LoadScene("TestRoom");
         }
     }

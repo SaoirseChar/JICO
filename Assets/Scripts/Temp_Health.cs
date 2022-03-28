@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Temp_Health : MonoBehaviour
     public Image _hunger;
     public Image _fun;
 
+    public float life;
+
     public TMP_Text happyText, funText, hungerText;
 
     public float happy, hungry, play;
@@ -16,29 +19,31 @@ public class Temp_Health : MonoBehaviour
 
     public int clickCount = 0;
     public ParticleSystem hearts;
-    public ParticleSystem sleep;
     public AudioSource petNoise;
-    
-    [Header("Pet Patrol State")] 
+    public ParticleSystem sleep;
+
+    [Header("Pet Patrol State")] public Transform sickPosition;
     public Transform[] patrolSpots;
     public Transform lookPoint;
     private int randomSpot; //Choose a random position for the blob to go to
     private float waitTime;
+
     [Tooltip("How long blob pauses on each waypoint")]
     public float[] startWaitTime;
 
-    [Header("Rotation & Movement")] 
-    [HideInInspector] public float targetAngle;
+    [Header("Rotation & Movement")] [HideInInspector]
+    public float targetAngle;
+
     [HideInInspector] public float angle;
     public float moveSpeed;
     private float turnSmoothVelocity;
     public float turnSpeed;
-    
+
     private Animator anim;
-    public Material deadMat;
+    public Material sickMat;
     public Material hungryMat;
-    public Material newMat; 
-    
+    public Material newMat;
+
     private void Start()
     {
         //anim = GetComponent<Animator>();
@@ -52,8 +57,13 @@ public class Temp_Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Patrol();
-        
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(LowHealthJico());
+        }
+
+        //Patrol();
+
         /*_happiness.fillAmount = happy;
         _hunger.fillAmount = hungry;
         _fun.fillAmount = play;*/
@@ -61,36 +71,12 @@ public class Temp_Health : MonoBehaviour
         happyText.text = "Love: " + happy;
         funText.text = "Fun: " + play;
         hungerText.text = "Hunger: " + hungry;
-        
+
         //Smooth rotation between walk points
         targetAngle = Mathf.Atan2(patrolSpots[randomSpot].transform.position.x - transform.position.x,
             patrolSpots[randomSpot].transform.position.z - transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            DecreaseHunger(10f);
-            print(happy);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            DecreaseHappiness(10f);
-            print(hungry);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            UpdateHappiness(10f);
-            print(happy);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            UpdateHunger(10f);
-            print(hungry);
-        }
 
         #region MyRegion
 
@@ -100,13 +86,13 @@ public class Temp_Health : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             RaycastHit hitInfo;
 
-            if(Physics.Raycast(mainCam.ScreenPointToRay(mousePos), out hitInfo))
+            if (Physics.Raycast(mainCam.ScreenPointToRay(mousePos), out hitInfo))
             {
-                if(hitInfo.transform.gameObject.CompareTag("Jico"))
+                if (hitInfo.transform.gameObject.CompareTag("Jico"))
                 {
                     clickCount++;
-                    
-                    if(clickCount >= 2)
+
+                    if (clickCount >= 2)
                     {
                         //Play cute noise
                         PetNoises(petNoise);
@@ -114,14 +100,14 @@ public class Temp_Health : MonoBehaviour
                         hearts.Play(); //Play hearts particles
                         clickCount = 0; //Reset click count
                         //Make Pet jump when happy
-                        //anim.SetTrigger("jump");
                     }
                 }
             }
         }
+
         #endregion
     }
-    
+
     private void Patrol()
     {
         transform.position = Vector3.MoveTowards(transform.position, patrolSpots[randomSpot].position,
@@ -133,8 +119,8 @@ public class Temp_Health : MonoBehaviour
             //If wait time has passed
             if (waitTime <= 0)
             {
-                //anim.SetInteger("Walk", 1);
-                
+                //Walk animation
+
                 //Move to another point
                 randomSpot = Random.Range(0, patrolSpots.Length);
 
@@ -144,10 +130,6 @@ public class Temp_Health : MonoBehaviour
             else if (waitTime >= 0)
             {
                 //Make blob idle
-                //anim.SetTrigger("Idle");
-                
-                //Stop walking
-                //anim.SetInteger("Walk", 0);
 
                 //Look at point when idle
                 transform.LookAt(lookPoint);
@@ -157,54 +139,71 @@ public class Temp_Health : MonoBehaviour
             }
         }
     }
-    
+
+    private IEnumerator LowHealthJico()
+    {
+        //Move Jico to sad spot
+        Vector3.MoveTowards(transform.position, sickPosition.transform.position, moveSpeed * Time.deltaTime);
+
+        //Do sick animation (shiver eg) OR Green material
+        gameObject.GetComponent<MeshRenderer>().material = sickMat;
+        //anim.Play("Sick");
+
+        //Wait until health is above 50%
+        //yield return new WaitUntil((() => life >= 50f));
+
+        yield return new WaitForSeconds(15f);
+
+        //Go back to patrolling
+        Patrol();
+    }
+
     public void DecreaseHappiness(float sadIndex)
     {
         happy -= sadIndex;
         _happiness.fillAmount = happy / statTime;
         happy--;
-
-        if(happy <= 0)
+        
+        if (happy <= 0)
         {
             happy = 0;
-            gameObject.GetComponent<MeshRenderer>().material = deadMat;
-            //transform.position = transform.position; 
+            gameObject.GetComponent<MeshRenderer>().material = sickMat;
         }
     }
-    
+
     public void DecreaseHunger(float hungerIndex)
     {
         hungry -= hungerIndex;
         _hunger.fillAmount = hungry / statTime;
         hungry--;
 
-        if(hungry <= 0)
+        if (hungry <= 0)
         {
             hungry = 0;
             gameObject.GetComponent<MeshRenderer>().material = hungryMat;
         }
     }
-    
+
     public void UpdateHappiness(float happyIndex)
     {
         happy += happyIndex;
         _happiness.fillAmount = happy * statTime;
         happy++;
 
-        if(happy >= 100)
+        if (happy >= 100)
         {
             happy = 100;
             gameObject.GetComponent<MeshRenderer>().material = newMat;
         }
     }
-    
+
     public void UpdateHunger(float hungerIndex)
     {
         hungry += hungerIndex;
         _hunger.fillAmount = hungry * statTime;
         hungry++;
 
-        if(hungry >= 100)
+        if (hungry >= 100)
         {
             hungry = 100;
             gameObject.GetComponent<MeshRenderer>().material = newMat;

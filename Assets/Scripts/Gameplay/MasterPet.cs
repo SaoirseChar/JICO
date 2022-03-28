@@ -69,7 +69,6 @@ public class MasterPet : MonoBehaviour
     private void Start()
     {
         hearts.Stop();
-        //rigi = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         UpdateStats();
 
@@ -97,7 +96,7 @@ public class MasterPet : MonoBehaviour
                 {
                     _GameManager.instance.clickCount++;
                     
-                    if(_GameManager.instance.clickCount >= 3)
+                    if(_GameManager.instance.clickCount >= 2)
                     {
                         //Play cute noise
                         PetNoises(petNoise);
@@ -105,7 +104,7 @@ public class MasterPet : MonoBehaviour
                         hearts.Play(); //Play hearts particles
                         _GameManager.instance.clickCount = 0; //Reset click count
                         //Make Pet jump when happy
-                        anim.SetBool(CanJump, true);
+                        //anim.SetBool(CanJump, true);
                     }
                 }
             }
@@ -188,7 +187,7 @@ public class MasterPet : MonoBehaviour
         }
         else
         {
-            InvokeRepeating(nameof(UpdateDevice), 0f, 130f); //Every 130 sec will save the time when close game. Then when player opens again, time will be based on 130 secs before game was closed.
+            InvokeRepeating(nameof(UpdateDevice), 0f, 60f); //Every 60 sec will save the time when close game. Then when player opens again, time will be based on 60 secs before game was closed.
         }
     }
 

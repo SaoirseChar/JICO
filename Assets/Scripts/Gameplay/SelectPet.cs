@@ -27,7 +27,7 @@ public class SelectPet : MonoBehaviour
             pets[choiceIndex].SetActive(true);
 
         if(_GameManager.instance != null)
-            _GameManager.instance.pet = pets[choiceIndex].GetComponent<MasterPet>();
+            _GameManager.instance.pet = pets[choiceIndex].GetComponent<Temp_Health>();
     }
 
 
@@ -61,6 +61,6 @@ public class SelectPet : MonoBehaviour
     public void ChoosePet()
     {
         PlayerPrefs.SetInt("Pet Selected", choiceIndex);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("TestRoom");
     }
 }
