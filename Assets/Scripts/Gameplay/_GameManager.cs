@@ -5,13 +5,13 @@ using TMPro;
 
 public class _GameManager : MonoBehaviour
 {
-    [Header("Throw Ball")]
+    /*[Header("Throw Ball")]
     public GameObject ball;
     public Transform spawnPos;
     public GameObject ballObject;
     public float force = 5f;
     //Constant float to keep the maximum amount of force given to the object
-    public const float maxForce = 100f;
+    public const float maxForce = 100f;*/
 
     public static _GameManager instance = null;
 
@@ -86,7 +86,7 @@ public class _GameManager : MonoBehaviour
         }
     }
 
-    public void ThrowBall()
+    /*public void ThrowBall()
     {
         GameObject ball = ObjectPool.instance.GetPooledToyObject("Toy");
         if (ball != null)
@@ -95,7 +95,7 @@ public class _GameManager : MonoBehaviour
             ball.transform.position = spawnPos.transform.position;
             ball.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
         }
-    }
+    }*/
 
     /// <summary>
     /// Function to set the nickname of your pet.
