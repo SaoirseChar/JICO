@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
@@ -82,13 +83,13 @@ public class Temp_Health : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.I))
         {
-            UpdateHunger(10f);
+            UpdateHappiness(10f);
             print(happy);
         }
         
         if (Input.GetKeyDown(KeyCode.O))
         {
-            UpdateHappiness(10f);
+            StartCoroutine("Hunger", 10f);
             print(hungry);
         }
 
@@ -188,7 +189,7 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHappiness(float happyIndex)
     {
         happy += happyIndex;
-        _happiness.fillAmount = happy / statTime;
+        _happiness.fillAmount = happy * statTime;
         happy++;
 
         if(happy >= 100)
@@ -201,13 +202,31 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHunger(float hungerIndex)
     {
         hungry += hungerIndex;
-        _hunger.fillAmount = hungry / statTime;
-        hungry++;
+        _hunger.fillAmount = hungry * statTime;
+        //hungry++;
 
         if(hungry >= 100)
         {
             hungry = 100;
             gameObject.GetComponent<MeshRenderer>().material = newMat;
+        }
+    }
+
+    private IEnumerator Hunger(float hungerIndex)
+    {
+        hungry -= hungerIndex;
+
+        while (true)
+        {
+            _hunger.fillAmount = hungry / statTime;
+            hungry--;
+
+            if(hungry <= 0)
+            {
+                hungry = 0;
+                gameObject.GetComponent<MeshRenderer>().material = hungryMat;
+                StopCoroutine("Hunger");
+            }
         }
     }
     

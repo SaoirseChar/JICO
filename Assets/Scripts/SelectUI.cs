@@ -1,11 +1,10 @@
-using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectUI : MonoBehaviour
 {
     public TMP_Text text;
-
     public GameObject uiObject;
 
     private void Start()
@@ -24,5 +23,14 @@ public class SelectUI : MonoBehaviour
     {
         text.text = "";
         uiObject.SetActive(false);
+    }
+
+    private void OnMouseDown()
+    {
+        if (name == "Cube")
+        {
+            DontDestroyOnLoad(gameObject);
+            SceneManager.LoadScene("TestRoom");
+        }
     }
 }

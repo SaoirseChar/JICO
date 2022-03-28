@@ -1434,6 +1434,7 @@ MonoBehaviour:
   happy: 100
   hungry: 100
   play: 100
+  statTime: 2
   clickCount: 0
   hearts: {fileID: 860160642}
   sleep: {fileID: 1268136248}
