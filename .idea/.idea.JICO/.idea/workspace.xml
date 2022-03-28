@@ -6,15 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestBath.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestBath.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestStart.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestStart.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/book1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/book1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/book2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/book2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/kawoshin.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/kawoshin.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/room.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/room.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/stool.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/stool.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/table.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/table.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/HealthBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/HealthBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +95,7 @@
       <workItem from="1648165665701" duration="29000" />
       <workItem from="1648165727970" duration="15580000" />
       <workItem from="1648423716380" duration="4583000" />
-      <workItem from="1648433015948" duration="6742000" />
+      <workItem from="1648433015948" duration="9568000" />
     </task>
     <servers />
   </component>

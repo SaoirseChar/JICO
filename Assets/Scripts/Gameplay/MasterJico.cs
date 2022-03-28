@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class MasterPet : MonoBehaviour
+public class MasterJico : MonoBehaviour
 {
     #region Pet Stats Variables
     [Header("Pet Stats")]
@@ -231,7 +231,7 @@ public class MasterPet : MonoBehaviour
     public void UpdateHappiness(float happyIndex)
     {
         happiness += happyIndex;
-        _GameManager.instance._happiness.fillAmount = happiness;
+        _GameManager.instance.lifeSlider.value = happiness;
         happiness++;
 
         if(happiness >= 100)
@@ -247,7 +247,7 @@ public class MasterPet : MonoBehaviour
     public void UpdateHunger(float hungerIndex)
     {
         hunger += hungerIndex;
-        _GameManager.instance._hunger.fillAmount = hunger;
+        _GameManager.instance.lifeSlider.value = hunger;
         hunger++;
 
         if(hunger >= 100)
@@ -259,7 +259,7 @@ public class MasterPet : MonoBehaviour
     public void DecreaseHappiness(float sadIndex)
     {
         happiness -= sadIndex;
-        _GameManager.instance._happiness.fillAmount = happiness;
+        _GameManager.instance.lifeSlider.value = happiness;
         happiness--;
 
         if(happiness <= 0)
@@ -271,7 +271,7 @@ public class MasterPet : MonoBehaviour
     public void DecreaseHunger(float hungerIndex)
     {
         hunger -= hungerIndex;
-        _GameManager.instance._hunger.fillAmount = hunger;
+        _GameManager.instance.lifeSlider.value = hunger;
         hunger--;
 
         if(hunger <= 0)

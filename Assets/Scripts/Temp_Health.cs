@@ -6,23 +6,19 @@ using Random = UnityEngine.Random;
 
 public class Temp_Health : MonoBehaviour
 {
-    public Image _happiness;
-    public Image _hunger;
-    public Image _fun;
+    public Slider lifeSlider;
 
     public float life;
 
-    public TMP_Text happyText, funText, hungerText;
-
     public float happy, hungry, play;
-    public float statTime;
 
     public int clickCount = 0;
     public ParticleSystem hearts;
     public AudioSource petNoise;
     public ParticleSystem sleep;
 
-    [Header("Pet Patrol State")] public Transform sickPosition;
+    [Header("Pet Patrol State")] 
+    public Transform sickPosition;
     public Transform[] patrolSpots;
     public Transform lookPoint;
     private int randomSpot; //Choose a random position for the blob to go to
@@ -31,7 +27,8 @@ public class Temp_Health : MonoBehaviour
     [Tooltip("How long blob pauses on each waypoint")]
     public float[] startWaitTime;
 
-    [Header("Rotation & Movement")] [HideInInspector]
+    [Header("Rotation & Movement")] 
+    [HideInInspector]
     public float targetAngle;
 
     [HideInInspector] public float angle;
@@ -57,20 +54,10 @@ public class Temp_Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            StartCoroutine(LowHealthJico());
-        }
+        Patrol();
 
-        //Patrol();
-
-        /*_happiness.fillAmount = happy;
-        _hunger.fillAmount = hungry;
-        _fun.fillAmount = play;*/
-
-        happyText.text = "Love: " + happy;
-        funText.text = "Fun: " + play;
-        hungerText.text = "Hunger: " + hungry;
+        //Health slider
+        lifeSlider.value = happy + hungry + play;
 
         //Smooth rotation between walk points
         targetAngle = Mathf.Atan2(patrolSpots[randomSpot].transform.position.x - transform.position.x,
@@ -161,7 +148,7 @@ public class Temp_Health : MonoBehaviour
     public void DecreaseHappiness(float sadIndex)
     {
         happy -= sadIndex;
-        _happiness.fillAmount = happy / statTime;
+        lifeSlider.value = happy;
         happy--;
         
         if (happy <= 0)
@@ -174,7 +161,7 @@ public class Temp_Health : MonoBehaviour
     public void DecreaseHunger(float hungerIndex)
     {
         hungry -= hungerIndex;
-        _hunger.fillAmount = hungry / statTime;
+        lifeSlider.value = hungry;
         hungry--;
 
         if (hungry <= 0)
@@ -187,7 +174,7 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHappiness(float happyIndex)
     {
         happy += happyIndex;
-        _happiness.fillAmount = happy * statTime;
+        lifeSlider.value = happy;
         happy++;
 
         if (happy >= 100)
@@ -200,7 +187,7 @@ public class Temp_Health : MonoBehaviour
     public void UpdateHunger(float hungerIndex)
     {
         hungry += hungerIndex;
-        _hunger.fillAmount = hungry * statTime;
+        lifeSlider.value  = hungry;
         hungry++;
 
         if (hungry >= 100)

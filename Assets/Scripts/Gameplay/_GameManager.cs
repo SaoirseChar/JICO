@@ -15,10 +15,8 @@ public class _GameManager : MonoBehaviour
 
     public static _GameManager instance = null;
 
-    [Header("UI Stuff")]
-    public Image _happiness;
-    public Image _hunger;
-    public Image _fun;
+    [Header("UI Stuff")] 
+    public Slider lifeSlider;
     public Temp_Health pet;
     public Transform[] walkPoints;
     public int clickCount;
@@ -63,9 +61,7 @@ public class _GameManager : MonoBehaviour
 
     private void Update()
     {
-        _hunger.fillAmount = pet.hungry;
-        _happiness.fillAmount = pet.happy;
-        _fun.fillAmount = pet.play;
+        lifeSlider.value = pet.happy + pet.hungry + pet.play;
         
         //nameText.text = pet.Name;
 

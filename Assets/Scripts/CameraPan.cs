@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraPan : MonoBehaviour
 {
     // The target marker.
-    public Transform target;
+    private Transform target;
 
     private void Start()
     {

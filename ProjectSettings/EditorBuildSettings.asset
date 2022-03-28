@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Temp_Assets/Test Scenes/TestStart.unity
     guid: a4c306c6ec2fc504d88e20ea00fbd56c
   - enabled: 1
-    path: Assets/Temp_Assets/Test Scenes/TestRoom.unity
-    guid: 386c7115835289b489bdcd717916cd8d
+    path: Assets/Scenes/Room.unity
+    guid: 071229171fd4f5c47a6bbb20793bc157
   - enabled: 1
-    path: Assets/Temp_Assets/Test Scenes/TestBath.unity
+    path: Assets/Scenes/TestBath.unity
     guid: 24db4dd145d9d0b4cb9b30c047ab8a22
   m_configObjects: {}
