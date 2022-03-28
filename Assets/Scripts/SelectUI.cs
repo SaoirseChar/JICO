@@ -27,9 +27,10 @@ public class SelectUI : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (name == "Cube")
+        if (gameObject.tag.Equals("Jico"))
         {
             DontDestroyOnLoad(gameObject);
+            //gameObject.AddComponent<Temp_Health>();
             SceneManager.LoadScene("TestRoom");
         }
     }

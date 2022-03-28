@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
@@ -89,7 +88,7 @@ public class Temp_Health : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.O))
         {
-            StartCoroutine("Hunger", 10f);
+            UpdateHunger(10f);
             print(hungry);
         }
 
@@ -103,7 +102,7 @@ public class Temp_Health : MonoBehaviour
 
             if(Physics.Raycast(mainCam.ScreenPointToRay(mousePos), out hitInfo))
             {
-                if(hitInfo.transform.gameObject.CompareTag("Player"))
+                if(hitInfo.transform.gameObject.CompareTag("Jico"))
                 {
                     clickCount++;
                     
@@ -203,7 +202,7 @@ public class Temp_Health : MonoBehaviour
     {
         hungry += hungerIndex;
         _hunger.fillAmount = hungry * statTime;
-        //hungry++;
+        hungry++;
 
         if(hungry >= 100)
         {
@@ -212,24 +211,6 @@ public class Temp_Health : MonoBehaviour
         }
     }
 
-    private IEnumerator Hunger(float hungerIndex)
-    {
-        hungry -= hungerIndex;
-
-        while (true)
-        {
-            _hunger.fillAmount = hungry / statTime;
-            hungry--;
-
-            if(hungry <= 0)
-            {
-                hungry = 0;
-                gameObject.GetComponent<MeshRenderer>().material = hungryMat;
-                StopCoroutine("Hunger");
-            }
-        }
-    }
-    
     public void PetNoises(AudioSource _clip)
     {
         _clip.Play();
