@@ -27,7 +27,7 @@ public class SelectPet : MonoBehaviour
             pets[choiceIndex].SetActive(true);
 
         if(_GameManager.instance != null)
-            _GameManager.instance.pet = pets[choiceIndex].GetComponent<Temp_Health>();
+            _GameManager.instance.pet = pets[choiceIndex].GetComponent<MasterPet>();
     }
 
 

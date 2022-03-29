@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/JicoStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RoomAssetSetup.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Room.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterJico.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/JicoStats.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestBath.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestBath.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/Test Scenes/TestRoom.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/book1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/book1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/book2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/book2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/kawoshin.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/kawoshin.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/room.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/room.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/stool.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/stool.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/table.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/table.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/HealthBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/HealthBar.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/SlidingMenu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/SlidingMenu.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +25,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp_Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/Statemachine/StateMachine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/MasterPet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../FlowerPicker/Assets/Flower-Picker/Scripts/Inventory/LevelLoader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/_GameManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="26gNbwBCwC9u88sUxFOWpIV4VQY" />
@@ -95,7 +86,9 @@
       <workItem from="1648165665701" duration="29000" />
       <workItem from="1648165727970" duration="15580000" />
       <workItem from="1648423716380" duration="4583000" />
-      <workItem from="1648433015948" duration="9568000" />
+      <workItem from="1648433015948" duration="10170000" />
+      <workItem from="1648516596917" duration="1641000" />
+      <workItem from="1648534920420" duration="4922000" />
     </task>
     <servers />
   </component>

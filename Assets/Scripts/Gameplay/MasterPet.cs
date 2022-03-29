@@ -1,19 +1,19 @@
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 
-public class MasterJico : MonoBehaviour
+public class MasterPet : MonoBehaviour
 {
     #region Pet Stats Variables
     [Header("Pet Stats")]
-    private float hunger;
-    private float happiness;
-    private float fun;
+    private int hunger;
+    private int happiness;
+    private int fun;
     private string petName;
+    public float moveSpeed = 3f;
 
     #region Animations
     [Header("Animations")]
-    public Animator anim;
+    //public Animator anim;
     public ParticleSystem hearts;
     public ParticleSystem sleep;
     public AudioSource petNoise;
@@ -27,31 +27,29 @@ public class MasterJico : MonoBehaviour
     private Vector2 fingerUpPos;
     private bool detectSwipeAfterRelease = false;
 
-    //[SerializeField] private float minSwipeDistance;
+    [SerializeField] private float minSwipeDistance;
 
     //public static event Action<SwipeData> OnSwipe = delegate { };
 
     //This will be used to measure how much time has passed since game has been played
     //for updating the hunger, happiness and fun bars
     private bool serverTime;
-    private static readonly int CanJump = Animator.StringToHash("canJump");
-
     #endregion
 
     #region PROPERTIES
-    public float Hunger
+    public int Hunger
     {
         get { return hunger; }
         set { hunger = value; }
     }
 
-    public float Happiness
+    public int Happiness
     {
         get { return happiness; }
         set { happiness = value; }
     }
 
-    public float Fun
+    public int Fun
     {
         get { return fun; }
         set { fun = value; }
@@ -69,7 +67,7 @@ public class MasterJico : MonoBehaviour
     private void Start()
     {
         hearts.Stop();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         UpdateStats();
 
         if(!PlayerPrefs.HasKey("petName"))
@@ -92,7 +90,7 @@ public class MasterJico : MonoBehaviour
 
             if(Physics.Raycast(mainCam.ScreenPointToRay(mousePos), out hitInfo))
             {
-                if(hitInfo.transform.gameObject.CompareTag("Jico"))
+                if(hitInfo.transform.gameObject.CompareTag("Pet"))
                 {
                     _GameManager.instance.clickCount++;
                     
@@ -104,7 +102,7 @@ public class MasterJico : MonoBehaviour
                         hearts.Play(); //Play hearts particles
                         _GameManager.instance.clickCount = 0; //Reset click count
                         //Make Pet jump when happy
-                        //anim.SetBool(CanJump, true);
+                        //anim.SetTrigger("jump");
                     }
                 }
             }
@@ -126,11 +124,11 @@ public class MasterJico : MonoBehaviour
         if (!PlayerPrefs.HasKey("hunger"))
         {
             hunger = 100;
-            PlayerPrefs.SetFloat("hunger", hunger);
+            PlayerPrefs.SetInt("hunger", hunger);
         }
         else
         {
-            hunger = PlayerPrefs.GetFloat("hunger");
+            hunger = PlayerPrefs.GetInt("hunger");
         }
         #endregion
 
@@ -138,11 +136,11 @@ public class MasterJico : MonoBehaviour
         if (!PlayerPrefs.HasKey("happiness"))
         {
             happiness = 100;
-            PlayerPrefs.SetFloat("happiness", happiness);
+            PlayerPrefs.SetInt("happiness", happiness);
         }
         else
         {
-            happiness = PlayerPrefs.GetFloat("happiness");
+            happiness = PlayerPrefs.GetInt("happiness");
         }
         #endregion
 
@@ -151,15 +149,15 @@ public class MasterJico : MonoBehaviour
         if (!PlayerPrefs.HasKey("fun"))
         {
             fun = 100;
-            PlayerPrefs.SetFloat("fun", fun);
+            PlayerPrefs.SetInt("fun", fun);
         }
         else
         {
-            fun = PlayerPrefs.GetFloat("fun");
+            fun = PlayerPrefs.GetInt("fun");
         }
         #endregion
 
-        #region Using TimeSpan to alter hunger and happiness value 
+        #region Using TimeSpan to alter hunger and happiness value - I AM GOING TO ASSUME THIS WORKS
         TimeSpan ts = GetTimeSpan();
         hunger -= (int)(ts.TotalHours * 2); //Every hour will subtract 2 points from hunger
         if (hunger < 0)
@@ -187,7 +185,7 @@ public class MasterJico : MonoBehaviour
         }
         else
         {
-            InvokeRepeating(nameof(UpdateDevice), 0f, 60f); //Every 60 sec will save the time when close game. Then when player opens again, time will be based on 60 secs before game was closed.
+            InvokeRepeating(nameof(UpdateDevice), 0f, 130f); //Every 130 sec will save the time when close game. Then when player opens again, time will be based on 130 secs before game was closed.
         }
     }
 
@@ -228,10 +226,10 @@ public class MasterJico : MonoBehaviour
     /// Function to update happiness.
     /// </summary>
     /// <param name="happyIndex">happiness index for determining how much happiness is increased.</param>
-    public void UpdateHappiness(float happyIndex)
+    public void UpdateHappiness(int happyIndex)
     {
         happiness += happyIndex;
-        _GameManager.instance.lifeSlider.value = happiness;
+        _GameManager.instance.happinessSlider.value = happiness;
         happiness++;
 
         if(happiness >= 100)
@@ -244,39 +242,15 @@ public class MasterJico : MonoBehaviour
     /// Function to update hunger.
     /// </summary>
     /// <param name="hungerIndex">hunger index for determining how much hunger is increased.</param>
-    public void UpdateHunger(float hungerIndex)
+    public void UpdateHunger(int hungerIndex)
     {
         hunger += hungerIndex;
-        _GameManager.instance.lifeSlider.value = hunger;
+        _GameManager.instance.hungerSlider.value = hunger;
         hunger++;
 
         if(hunger >= 100)
         {
             hunger = 100;
-        }
-    }
-    
-    public void DecreaseHappiness(float sadIndex)
-    {
-        happiness -= sadIndex;
-        _GameManager.instance.lifeSlider.value = happiness;
-        happiness--;
-
-        if(happiness <= 0)
-        {
-            happiness = 0;
-        }
-    }
-    
-    public void DecreaseHunger(float hungerIndex)
-    {
-        hunger -= hungerIndex;
-        _GameManager.instance.lifeSlider.value = hunger;
-        hunger--;
-
-        if(hunger <= 0)
-        {
-            hunger = 0;
         }
     }
     #endregion
@@ -290,13 +264,11 @@ public class MasterJico : MonoBehaviour
         if(!serverTime)
         {
             UpdateDevice();
-            PlayerPrefs.SetFloat("hunger", Hunger);
-            PlayerPrefs.SetFloat("happiness", Happiness);
-            PlayerPrefs.SetFloat("fun", Fun);
+            PlayerPrefs.SetInt("hunger", Hunger);
+            PlayerPrefs.SetInt("happiness", Happiness);
+            PlayerPrefs.SetInt("fun", Fun);
             PlayerPrefs.SetString("name", Name);
         }
     }
     #endregion
-    
-    
 }

@@ -5,36 +5,36 @@ using TMPro;
 
 public class _GameManager : MonoBehaviour
 {
-    /*[Header("Throw Ball")]
-    public GameObject ball;
-    public Transform spawnPos;
-    public GameObject ballObject;
-    public float force = 5f;
+    //[Header("Throw Ball")]
+    //public GameObject ball;
+    //public Transform spawnPos;
+    //public GameObject ballObject;
+    //public float force = 5f;
     //Constant float to keep the maximum amount of force given to the object
-    public const float maxForce = 100f;*/
+    //public const float maxForce = 100f;
 
     public static _GameManager instance = null;
-
-    [Header("UI Stuff")] 
-    public Slider lifeSlider;
-    public Temp_Health pet;
-    public Transform[] walkPoints;
     public int clickCount;
 
+    [Header("UI Stuff")]
+    public Slider happinessSlider;
+    public Slider hungerSlider;
+    public MasterPet pet;
+
     #region UI Elements
-    /*[Header("Quick Menu")]
+    [Header("Quick Menu")]
     public TMP_Text nameText;
     public Button editName;
     public GameObject changeNamePanel;
     public GameObject nameInput;
+    
+    /*public Button menuButton;
     public GameObject explore;
     public GameObject quitButton;
     public GameObject feed;
-    public GameObject playFetch;*/
-    
-    //Wishlist stuff (call/whistle to get pet to come to start position for petting)
     //public GameObject call;
-    //public AudioSource whistleAudio;
+    public GameObject playFetch;
+    //public AudioSource whistleAudio;*/
     #endregion
 
     private void Awake()
@@ -49,27 +49,27 @@ public class _GameManager : MonoBehaviour
             return;
         }
 
-        //call.SetActive(false);
-        //Set all icons in the quick menu to false
-        /*changeNamePanel.SetActive(false);
+        /*//Set all icons in the quick menu to false
+        changeNamePanel.SetActive(false);
         editName.gameObject.SetActive(false);
         explore.SetActive(false);
         quitButton.SetActive(false);
         feed.SetActive(false);
+        //call.SetActive(false);
         playFetch.SetActive(false);*/
     }
 
     private void Update()
     {
-        lifeSlider.value = pet.happy + pet.hungry + pet.play;
-        
-        //nameText.text = pet.Name;
+        hungerSlider.value = pet.Hunger;
+        happinessSlider.value = pet.Happiness;
+        nameText.text = pet.Name;
 
-        /*if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.I))
         {
             changeNamePanel.SetActive(true);
             editName.enabled = true;
-        }*/
+        }
     }
 
     /*public void ThrowBall()
@@ -91,8 +91,8 @@ public class _GameManager : MonoBehaviour
     {
         if(b)
         {
-            //pet.Name = nameInput.GetComponent<InputField>().text; //Connect Name to Input field object
-            //PlayerPrefs.SetString("name", pet.Name); //Set the string name to the Pet name 
+            pet.Name = nameInput.GetComponent<InputField>().text; //Connect Name to Input field object
+            PlayerPrefs.SetString("name", pet.Name); //Set the string name to the Pet name 
         }
     }
 
@@ -118,4 +118,5 @@ public class _GameManager : MonoBehaviour
     {
         pet.UpdateHunger(5);
     }
+
 }

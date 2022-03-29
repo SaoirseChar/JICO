@@ -5,6 +5,39 @@ TextureImporter:
   - first:
       213: 6847273697901424996
     second: SlidingMenu_0
+  - first:
+      213: 6493695321582298251
+    second: SlidingMenu_1
+  - first:
+      213: 8798476900911075989
+    second: SlidingMenu_2
+  - first:
+      213: -9046671790542577252
+    second: SlidingMenu_3
+  - first:
+      213: -2990944015636767110
+    second: SlidingMenu_4
+  - first:
+      213: 3503941604860175570
+    second: SlidingMenu_5
+  - first:
+      213: 2613371559157786285
+    second: SlidingMenu_6
+  - first:
+      213: -5041068067112297104
+    second: SlidingMenu_7
+  - first:
+      213: -8274756101117987226
+    second: SlidingMenu_8
+  - first:
+      213: 4867719898408852597
+    second: SlidingMenu_9
+  - first:
+      213: 3956937379821926813
+    second: SlidingMenu_10
+  - first:
+      213: 4040749016426510188
+    second: SlidingMenu_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
