@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraPan : MonoBehaviour
@@ -17,8 +14,7 @@ public class CameraPan : MonoBehaviour
     void Update()
     {
         #region Rotation
-        
-        var lookDir = target.position - transform.position;
+        Vector3 lookDir = target.position - transform.position;
         lookDir.y = 0; // keep only the horizontal direction
         transform.rotation = Quaternion.LookRotation(lookDir);
         #endregion

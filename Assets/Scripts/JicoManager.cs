@@ -1,19 +1,20 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
+using Unity.Profiling.LowLevel.Unsafe;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class JicoManager : MonoBehaviour
 {
     public int clickCount = 0;
-    public ParticleSystem hearts;
+    public ParticleSystem hearts, evolve;
     public AudioSource petNoise;
     public ParticleSystem sleep;
     public string petName;
 
     [Header("Pet Patrol State")] 
-    public float _happiness;
-    public float _hunger;
+    public int _happiness, _hunger;
     public Transform sickPosition;
     public Transform[] patrolSpots;
     public Transform lookPoint;
@@ -23,8 +24,7 @@ public class JicoManager : MonoBehaviour
     [Tooltip("How long blob pauses on each waypoint")]
     public float[] startWaitTime;
 
-    [Header("Rotation & Movement")] 
-    [HideInInspector]
+    [Header("Rotation & Movement")] [HideInInspector]
     public float targetAngle;
 
     [HideInInspector] public float angle;
@@ -36,20 +36,24 @@ public class JicoManager : MonoBehaviour
     public Material sickMat;
     public Material hungryMat;
     public Material newMat;
-    
+    private Mesh mesh;
+
+    [Header("Jico Evolution")] public GameObject evolvePanel;
+    [SerializeField] private GameObject jicoAdult;
+
     //This will be used to measure how much time has passed since game has been played
     //for updating the hunger & happiness bars
     private bool serverTime;
-    private static readonly int CanJump = Animator.StringToHash("canJump");
 
     #region PROPERTIES
-    public float Hunger
+
+    public int Hunger
     {
         get { return _hunger; }
         set { _hunger = value; }
     }
 
-    public float Happiness
+    public int Happiness
     {
         get { return _happiness; }
         set { _happiness = value; }
@@ -60,24 +64,21 @@ public class JicoManager : MonoBehaviour
         get { return petName; }
         set { petName = value; }
     }
+
     #endregion
-    
+
     private void Start()
     {
+        mesh = GetComponent<Mesh>();
+        PlayerPrefs.SetString("then", "30/04/2022 5:04:00");
+        UpdateStatus();
+
         //anim = GetComponent<Animator>();
 
         waitTime = Random.Range(0, startWaitTime.Length);
 
         //Set up the random points for the blob to walk to
         randomSpot = Random.Range(0, patrolSpots.Length);
-        
-        UpdateStats();
-
-        if(!PlayerPrefs.HasKey("petName"))
-        {
-            PlayerPrefs.SetString("petName", "Pet");
-            petName = PlayerPrefs.GetString("petName");
-        }
     }
 
     // Update is called once per frame
@@ -88,8 +89,6 @@ public class JicoManager : MonoBehaviour
             patrolSpots[randomSpot].transform.position.z - transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-        #region MyRegion
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -116,9 +115,17 @@ public class JicoManager : MonoBehaviour
             }
         }
 
-        #endregion
-        
-        if (Health.instance.health < 50)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(EvolveJico());
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Health.instance.Damage(25);
+        }
+
+        if (Health.instance.health <= Health.instance.maxHealth / 2)
         {
             StartCoroutine(LowHealthJico());
         }
@@ -164,7 +171,8 @@ public class JicoManager : MonoBehaviour
     private IEnumerator LowHealthJico()
     {
         //Move Jico to sad spot
-        transform.position = Vector3.MoveTowards(transform.position, sickPosition.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, sickPosition.transform.position,
+            moveSpeed * Time.deltaTime);
 
         //Do sick animation (shiver eg) OR Green material
         gameObject.GetComponent<MeshRenderer>().material = sickMat;
@@ -173,7 +181,7 @@ public class JicoManager : MonoBehaviour
         //Wait until health is above 50%
         yield return new WaitUntil((() => Health.instance.health >= 50f));
 
-        yield return new WaitForSeconds(15f);
+        gameObject.GetComponent<MeshRenderer>().material = newMat;
 
         //Go back to patrolling
         Patrol();
@@ -183,114 +191,107 @@ public class JicoManager : MonoBehaviour
     {
         _clip.Play();
     }
-    
-    #region MANAGES PET STATS OVER TIME - HAPPINESS, HUNGER AND FUN
-    //Use PlayerPrefs to save stats
-    private void UpdateStats()
+
+    private void UpdateStatus()
     {
-        #region Hunger Stat
-        if (!PlayerPrefs.HasKey("hunger"))
+        if (!PlayerPrefs.HasKey("_hunger"))
         {
             _hunger = 100;
-            PlayerPrefs.SetFloat("hunger", _hunger);
+            PlayerPrefs.SetInt("_hunger", _hunger);
         }
         else
         {
-            _hunger = PlayerPrefs.GetFloat("hunger");
+            _hunger = PlayerPrefs.GetInt("_hunger");
         }
-        #endregion
 
-        #region Happiness Stat
-        if (!PlayerPrefs.HasKey("happiness"))
+        if (!PlayerPrefs.HasKey("_happiness"))
         {
             _happiness = 100;
-            PlayerPrefs.SetFloat("happiness", _happiness);
+            PlayerPrefs.SetInt("_happiness", _happiness);
         }
         else
         {
-            _happiness = PlayerPrefs.GetFloat("happiness");
+            _happiness = PlayerPrefs.GetInt("_happiness");
         }
-        #endregion
-
-        #region Using TimeSpan to alter hunger and happiness value 
-        TimeSpan ts = GetTimeSpan();
-        _hunger -= (int)(ts.TotalHours * 2); //Every hour will subtract 2 points from hunger
-        if (_hunger < 0)
-        {
-            _hunger = 0;
-        }
-
-        _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
-        if(_happiness < 0)
-        {
-            _happiness = 0;
-        }
-        #endregion
 
         if (!PlayerPrefs.HasKey("then"))
         {
             PlayerPrefs.SetString("then", GetStringTime());
         }
-        
-        Debug.Log(GetTimeSpan().ToString()); //TESTING
+
+        TimeSpan ts = GetTimeSpan();
+
+        //For every hour you are not in game, subtract 2 points from hunger
+        _hunger -= (int)(ts.TotalHours * 2);
+        if (_hunger < 0)
+            _hunger = 0;
+        //Compared to how hungry the Jico is, the happiness will also decrease as well
+        _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
+        if (_happiness < 0)
+            _happiness = 0;
+
+        //Debug.Log(GetTimeSpan().ToString());
 
         if (serverTime)
-        {
-            
-        }
+            UpdateServer();
         else
-        {
-            InvokeRepeating(nameof(UpdateDevice), 0f, 130f); //Every 60 sec will save the time when close game. Then when player opens again, time will be based on 60 secs before game was closed.
-        }
+            InvokeRepeating(nameof(UpdateDevice), 0f, 30f);
     }
 
-    /// <summary>
-    /// This function will allow access of devices time in order to alter hunger and happiness based
-    /// on how much time has passed in the game
-    /// </summary>
+    public void UpdateServer()
+    {
+    }
+
     public void UpdateDevice()
     {
         PlayerPrefs.SetString("then", GetStringTime());
     }
 
     /// <summary>
-    /// Object that is the result of two time subtractions
+    /// Subtract two DateTimes from each other to calculate
     /// </summary>
     /// <returns></returns>
     TimeSpan GetTimeSpan()
     {
-        if(serverTime)
-        {
+        if (serverTime)
             return new TimeSpan();
-        }
         else
-        {
             return DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("then"));
-        }
     }
 
+    /// <summary>
+    /// Convert string time to DateTime
+    /// </summary>
+    /// <returns></returns>
     private string GetStringTime()
     {
-        DateTime now = DateTime.Now; //Accessing current time on device
-        return now.Day + "/" + now.Month + "/" + now.Year + " " + now.Hour + ":" + now.Minute;
+        DateTime now = DateTime.Now;
+        return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
     }
-    #endregion
 
-
-    #region SAVE PET INFO
-    /// <summary>
-    /// Update Device Time and save all info (hunger and happiness)
-    /// </summary>
-    public void SavePetInfo()
+    public void FeedJico()
     {
-        if(!serverTime)
-        {
-            UpdateDevice();
-            PlayerPrefs.SetFloat("hunger", Hunger);
-            PlayerPrefs.SetFloat("happiness", Happiness);
-            PlayerPrefs.SetString("name", Name);
-        }
     }
-    #endregion
-    
+
+    private IEnumerator EvolveJico()
+    {
+        //Move Jico to 4th spot
+        transform.position = Vector3.MoveTowards(transform.position, patrolSpots[4].position,
+            moveSpeed * Time.deltaTime);
+
+        evolve.Play();
+
+        MeshRenderer myMesh = gameObject.GetComponent<MeshRenderer>();
+        myMesh = jicoAdult.GetComponent<MeshRenderer>();
+
+        yield return new WaitUntil(() => (evolve.isStopped));
+
+        evolvePanel.SetActive(true);
+
+        yield return new WaitForSeconds(10);
+
+        //Go back to patrolling
+        Patrol();
+    }
 }
+

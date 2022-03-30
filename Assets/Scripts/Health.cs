@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Health : MonoBehaviour
 {
     public static Health instance;
@@ -36,11 +37,6 @@ public class Health : MonoBehaviour
 
         HealthBarFiller();
         ColorChanger();
-        
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Damage(10f);
-        }
     }
 
     void HealthBarFiller()
@@ -57,10 +53,14 @@ public class Health : MonoBehaviour
     {
         if (health > 0)
             health -= damagePoints;
+        HealthBarFiller();
+        ColorChanger();
     }
     public void Heal(float healingPoints)
     {
         if (health < maxHealth)
             health += healingPoints;
+        HealthBarFiller();
+        ColorChanger();
     }
 }
