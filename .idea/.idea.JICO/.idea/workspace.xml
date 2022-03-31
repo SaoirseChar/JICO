@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/CW/LeanGUI/Examples/06 Notification.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/CW/LeanGUI/Examples/06 Notification.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Room.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/CloseList.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/CloseList.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp_Assets/OpenList.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp_Assets/OpenList.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,17 +23,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlaySession.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/Statemachine/StateMachine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/RemovePlayerPrefs.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/MasterPet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../FlowerPicker/Assets/Flower-Picker/Scripts/Inventory/LevelLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/_GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TestNotification.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Cross-Platform-Game-main/Cross-Platform-Game-main/Assets/Scripts/Gameplay/MasterPet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/InputActivities.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../FlowerPicker/Assets/Flower-Picker/Scripts/Inventory/LevelLoader.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="26gNbwBCwC9u88sUxFOWpIV4VQY" />
   <component name="ProjectViewState">
@@ -83,7 +99,7 @@
       <workItem from="1648433015948" duration="10170000" />
       <workItem from="1648516596917" duration="1641000" />
       <workItem from="1648534920420" duration="4922000" />
-      <workItem from="1648615063588" duration="9962000" />
+      <workItem from="1648615063588" duration="22569000" />
     </task>
     <servers />
   </component>

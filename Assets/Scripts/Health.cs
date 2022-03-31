@@ -39,11 +39,11 @@ public class Health : MonoBehaviour
         ColorChanger();
     }
 
-    void HealthBarFiller()
+    public void HealthBarFiller()
     {
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (health / maxHealth), lerpSpeed);
     }
-    void ColorChanger()
+    public void ColorChanger()
     {
         Color healthColor = Color.Lerp(Color.red, Color.green, (health / maxHealth));
         healthBar.color = healthColor;

@@ -1,20 +1,24 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Unity.Profiling.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class JicoManager : MonoBehaviour
 {
     public int clickCount = 0;
-    public ParticleSystem hearts, evolve;
+    public ParticleSystem hearts, feed, evolve, stinky, clean;
     public AudioSource petNoise;
     public ParticleSystem sleep;
     public string petName;
+    public Button feedJico;
 
-    [Header("Pet Patrol State")] 
-    public int _happiness, _hunger;
+    [Header("Pet Patrol State")] public int _happiness;
+    public int _hunger;
+    [SerializeField] private int hygiene;
     public Transform sickPosition;
     public Transform[] patrolSpots;
     public Transform lookPoint;
@@ -36,7 +40,10 @@ public class JicoManager : MonoBehaviour
     public Material sickMat;
     public Material hungryMat;
     public Material newMat;
-    private Mesh mesh;
+    public Material stinkyMat;
+
+    public GameObject gameOverUI;
+    public Button cleanJico;
 
     [Header("Jico Evolution")] public GameObject evolvePanel;
     [SerializeField] private GameObject jicoAdult;
@@ -69,7 +76,7 @@ public class JicoManager : MonoBehaviour
 
     private void Start()
     {
-        mesh = GetComponent<Mesh>();
+        clean.Stop();
         PlayerPrefs.SetString("then", "30/04/2022 5:04:00");
         UpdateStatus();
 
@@ -134,6 +141,8 @@ public class JicoManager : MonoBehaviour
             Patrol();
             StopCoroutine(LowHealthJico());
         }
+
+        cleanJico.onClick.AddListener((() => { StartCoroutine(CleanJico()); }));
     }
 
     private void Patrol()
@@ -223,14 +232,32 @@ public class JicoManager : MonoBehaviour
 
         //For every hour you are not in game, subtract 2 points from hunger
         _hunger -= (int)(ts.TotalHours * 2);
-        if (_hunger < 0)
+        if (_hunger <= 0)
+        {
             _hunger = 0;
+        }
+
         //Compared to how hungry the Jico is, the happiness will also decrease as well
         _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
-        if (_happiness < 0)
+        if (_happiness <= 0)
+        {
             _happiness = 0;
+        }
 
-        //Debug.Log(GetTimeSpan().ToString());
+        //Every 1 hour the user is not playing, subtract 10 points from hygiene 
+        hygiene -= (int)(ts.TotalHours * 10);
+        if (hygiene <= 0)
+        {
+            hygiene = 0;
+            gameObject.GetComponent<MeshRenderer>().material = stinkyMat;
+        }
+
+        if (_hunger + _happiness == 0)
+        {
+            Health.instance.health = 0;
+            GameOver();
+            Debug.Log("Your Jico is dead!");
+        }
 
         if (serverTime)
             UpdateServer();
@@ -271,6 +298,31 @@ public class JicoManager : MonoBehaviour
 
     public void FeedJico()
     {
+        //Particle system feed play
+        feed.Play();
+
+        //Increase hunger
+        _hunger++;
+
+        Health.instance.Heal(10);
+    }
+
+    public IEnumerator CleanJico()
+    {
+        //Increase hunger
+        hygiene++;
+
+        Health.instance.Heal(5);
+        
+        clean.Play();
+
+        yield return new WaitForSeconds(2);
+        
+        clean.Stop();
+
+        yield return new WaitForSeconds(1);
+        
+        Patrol();
     }
 
     private IEnumerator EvolveJico()
@@ -293,5 +345,10 @@ public class JicoManager : MonoBehaviour
         //Go back to patrolling
         Patrol();
     }
-}
 
+    public void GameOver()
+    {
+        Destroy(gameObject);
+        gameOverUI.SetActive(true);
+    }
+}
