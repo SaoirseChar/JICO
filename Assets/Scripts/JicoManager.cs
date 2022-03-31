@@ -125,7 +125,7 @@ public class JicoManager : MonoBehaviour
             Health.instance.Damage(25);
         }
 
-        if (Health.instance.health <= Health.instance.maxHealth / 2)
+        if (Health.instance.health <= 50)
         {
             StartCoroutine(LowHealthJico());
         }

@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7cf830-0880-4824-b76d-cac4705697da" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JICO/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Room.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Room.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraPan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ball.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Ball.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/BallPosition.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/BallPosition.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GetPets.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/GetPets.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/JicoStats.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/JicoStats.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MasterPet.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/MusicManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/ObjectPool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/ObjectPool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/SelectPet.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/_GameManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/JicoManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +83,7 @@
       <workItem from="1648433015948" duration="10170000" />
       <workItem from="1648516596917" duration="1641000" />
       <workItem from="1648534920420" duration="4922000" />
-      <workItem from="1648615063588" duration="9856000" />
+      <workItem from="1648615063588" duration="9962000" />
     </task>
     <servers />
   </component>
